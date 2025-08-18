@@ -24,6 +24,6 @@ public class Subject {
     @ManyToOne
     private Professor professor;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "subjects")
     private List<Student> students;
 }
