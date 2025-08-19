@@ -11,6 +11,7 @@ import orgnization.school.repo.ProfessorRepo;
 import orgnization.school.repo.StudentRepo;
 import orgnization.school.repo.SubjectRepo;
 
+import java.util.Collections;
 import java.util.List;
 
 @SpringBootTest
@@ -43,6 +44,7 @@ class SchoolApplicationTests {
         System.out.println(admissonRepo.getTotalfees());
 
         System.out.println(studentRepo.countSubjects("Physics"));
+
 
 	}
 

@@ -2,15 +2,14 @@ package orgnization.school.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.action.internal.OrphanRemovalAction;
 
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +26,6 @@ public class Student {
     @ManyToMany
     private List<Subject> subjects;
 
-    @OneToOne(mappedBy = "student")
+    @OneToOne(mappedBy = "student",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE}, orphanRemoval = true,fetch =  FetchType.LAZY)
     private AdmissonReport admissonReport;
 }
