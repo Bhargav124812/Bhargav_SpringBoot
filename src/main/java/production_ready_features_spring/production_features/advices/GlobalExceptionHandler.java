@@ -1,0 +1,18 @@
+package production_ready_features_spring.production_features.advices;
+
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import production_ready_features_spring.production_features.exceptions.ResourceNotFoundException;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiError>handleResourceNotFoundException(ResourceNotFoundException exception){
+         ApiError apiError=new ApiError(exception.getLocalizedMessage(), HttpStatus.NOT_FOUND);
+         return new ResponseEntity<>(apiError,HttpStatus.NOT_FOUND);
+    }
+
+}
